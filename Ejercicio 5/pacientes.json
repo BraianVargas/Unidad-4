@@ -4,61 +4,41 @@
         {
             "__class__": "Paciente",
             "__atributos__": {
-                "apellido": "Sanchez",
-                "nombre": "Claudio",
-                "telefono": "(264)4735135",
-                "altura": "164",
-                "pes0": "60"
+                "Apellido": "Sanchez",
+                "Nombre": "Claudio",
+                "Telefono": "(264)4735135",
+                "Altura": "164",
+                "Peso": "60"
             }
         },
         {
             "__class__": "Paciente",
             "__atributos__": {
-                "apellido": "Videla",
-                "nombre": "Carolina",
-                "telefono": "(264)4003292",
-                "altura": "160",
-                "pes0": "70"
+                "Apellido": "Sanchez",
+                "Nombre": "Xiomara",
+                "Telefono": "(264)5466020",
+                "Altura": "120",
+                "Peso": "30"
             }
         },
         {
             "__class__": "Paciente",
             "__atributos__": {
-                "apellido": "terluk",
-                "nombre": "isma",
-                "telefono": "(264)1234567",
-                "altura": "180",
-                "pes0": "80"
+                "Apellido": "Videla",
+                "Nombre": "Carolina",
+                "Telefono": "(264)4003292",
+                "Altura": "160",
+                "Peso": "70"
             }
         },
         {
             "__class__": "Paciente",
             "__atributos__": {
-                "apellido": "Braian",
-                "nombre": "Vargas",
-                "telefono": "2645819065",
-                "altura": "61",
-                "pes0": "165"
-            }
-        },
-        {
-            "__class__": "Paciente",
-            "__atributos__": {
-                "apellido": "Juan",
-                "nombre": "Vargas",
-                "telefono": "2645282465",
-                "altura": "78",
-                "pes0": "165"
-            }
-        },
-        {
-            "__class__": "Paciente",
-            "__atributos__": {
-                "apellido": "jose",
-                "nombre": "Vargas",
-                "telefono": "123131311",
-                "altura": "76",
-                "pes0": "161"
+                "Apellido": "terluk",
+                "Nombre": "isma",
+                "Telefono": "(264)1234567",
+                "Altura": "180",
+                "Peso": "80"
             }
         }
     ]

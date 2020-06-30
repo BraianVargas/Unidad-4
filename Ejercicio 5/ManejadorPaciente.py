@@ -18,6 +18,25 @@ class ManejadorPacientes:
         indice = self.obtenerIndicePaciente(Paciente)
         self.__pacientes.pop(indice)
 
+    def ModificarPaciente(self,Paciente):
+        indice=self.obtenerIndicePaciente(Paciente)
+        self.__pacientes[indice]=Paciente
+
+    def imcresultado(self,indice):
+        peso=float(float(self.__pacientes[indice].getPeso())/(float(self.__pacientes[indice].getAltura())/100)**2)
+        pesof=round(peso,2)
+        return pesof
+
+    def corporal(self,pesof):
+        if pesof<18.5:
+            return 'Peso Inferior Al Normal'
+        elif pesof<24.9:
+            return 'Peso Normal'
+        elif pesof<29.9:
+            return 'Peso Superior Al Normal'
+        else:
+            return 'Obesidad'
+
     def updatePaciente(self, Paciente):
         indice = self.obtenerIndicePaciente(Paciente)
         self.__pacientes[indice]=Paciente

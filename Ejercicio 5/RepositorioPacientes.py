@@ -20,7 +20,7 @@ class RespositorioPacientes(object):
         self.__manejador.agregarPaciente(paciente)
         return paciente
 
-    def modificarPaciete(self, paciente):
+    def modificarPaciente(self, paciente):
         self.__manejador.updatePaciente(paciente)
         return paciente
 
@@ -29,3 +29,9 @@ class RespositorioPacientes(object):
 
     def grabarDatos(self):
         self.__conn.guardarJSONArchivo(self.__manejador.toJSON())
+    def Imcresultado(self,indice):
+        r=self.__manejador.imcresultado(indice)
+        return r
+    def Corporal(self,resultado):
+        c=self.__manejador.corporal(resultado)
+        return c

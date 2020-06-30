@@ -1,4 +1,4 @@
-from vistaPacientes import ViewPacientes, NewPaciente
+from vistaPacientes import ViewPacientes,ShowIMC,FormularioPaciente,NewPaciente,UpdateFormularioPaciente,ShowIMC
 from ManejadorPaciente import ManejadorPacientes
 
 class ControladorPacientes(object):
@@ -42,3 +42,9 @@ class ControladorPacientes(object):
         self.vista.mainloop()
     def salirGrabarDatos(self):
         self.repo.grabarDatos()
+    def Imc(self):
+        indice=self.seleccion
+        r=self.repo.Imcresultado(indice)
+        c=self.repo.Corporal(r)
+        ShowIMC(self.vista,r,c).show()
+        self.vista.limpiarImc()             

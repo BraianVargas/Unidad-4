@@ -1,3 +1,5 @@
+from tkinter import *
+from tkinter import ttk
 import tkinter as tk
 from tkinter import messagebox
 from Paciente import Paciente
@@ -21,6 +23,33 @@ class ListaPacientes(tk.Frame):
         handler = lambda _: callback(self.lb.curselection()[0])
         self.lb.bind("<Double-Button-1>", handler)
 
+class ShowIMC(tk.Toplevel):
+    def __init__(self,parent,imc,corporal):
+        super().__init__(parent)
+        self.title('IMC')
+        self.geometry("330x105")
+        self.resizable(0,0)
+        
+        self.__entryIMC = IntVar()
+        self.__entryComp = StringVar()
+        self.__entryIMC.set(imc)
+        self.__entryComp.set(corporal)
+
+        self.lblIMC = ttk.Label(self,text = 'IMC')
+        self.lblComp = ttk.Label(self,text='Composición Corporal')
+        self.entryIMC = ttk.Entry(self,textvariable = self.__entryIMC)
+        self.entryComp = ttk.Entry(self,textvariable = self.__entryComp, width=25)
+        self.btnBack = ttk.Button(self, text = 'Volver', width = 20,command = self.destroy)
+
+        self.lblIMC.grid(row = 0, column = 0, sticky = 'nw')
+        self.entryIMC.grid(row = 0, column = 1, sticky = 'nw')
+        self.lblComp.grid(row = 1, column = 0, sticky = 'nw')
+        self.entryComp.grid(row = 1, column = 1, sticky = 'nw')
+        self.btnBack.grid(row = 2, column = 0, sticky = 'nwse')
+    def show(self):
+        self.grab_set()
+        self.wait_window()
+
 class FormularioPaciente(tk.LabelFrame):
     fields = ("Apellido", "Nombre", "Telefono", "Peso", "Altura")
     def __init__(self, master, **kwargs):
@@ -36,15 +65,11 @@ class FormularioPaciente(tk.LabelFrame):
         entry.grid(row=position, column=1, pady=5)
         return entry
     def mostrarEstadoPacienteEnFormulario(self, paciente):
-        # a partir de un Paciente, obtiene el estado
-        # y establece en los valores en el formulario de entrada
         values = (paciente.getApellido(), paciente.getNombre(), paciente.getTelefono(),paciente.getPeso(),paciente.getAltura())
         for entry, value in zip(self.entries, values):
             entry.delete(0, tk.END)
-        entry.insert(0, value)
+            entry.insert(0, value)
     def crearPacienteDesdeFormulario(self):
-        #obtiene los valores de los campos del formulario
-        #para crear un nuevo Paciente
         values = [e.get() for e in self.entries]
         paciente=None
         try:
@@ -86,6 +111,9 @@ class UpdateFormularioPaciente(FormularioPaciente):
         self.btn_save.config(command=callback)
     def bind_delete(self, callback):
         self.btn_delete.config(command=callback)
+    def bind_verIMC(self,callback):
+        self.btn_IMC.config(command=callback)
+
 
 class ViewPacientes(tk.Tk):
     def __init__(self):
@@ -99,11 +127,11 @@ class ViewPacientes(tk.Tk):
         self.btn_new.pack(side=tk.BOTTOM, pady=5)
 
     def setControlador(self, ctrl):
-        #vincula la vista con el controlador
         self.btn_new.config(command=ctrl.crearPaciente)
         self.list.bind_doble_click(ctrl.seleccionarPaciente)
         self.form.bind_save(ctrl.modificarPaciente)
         self.form.bind_delete(ctrl.borrarPaciente)
+        self.form.bind_verIMC(ctrl.Imc)
 
     def agregarPaciente(self, paciente):
         self.list.insertar(paciente)
@@ -114,9 +142,13 @@ class ViewPacientes(tk.Tk):
     def borrarPaciente(self, index):
         self.form.limpiar()
         self.list.borrar(index)
-        #obtiene los valores del formulario y crea un nuevo contacto
+
+    def limpiarImc(self):
+        self.formulario.limpiar()        
+
     def obtenerDetalles(self):
         return self.form.crearPacienteDesdeFormulario()
-        #Ver estado de Contacto en formulario de contactos
-    def verPacienteEnForm(self, contacto):
-        self.form.mostrarEstadoPacienteEnFormulario(contacto)
+
+    def verPacienteEnForm(self, paciente):
+        self.form.mostrarEstadoPacienteEnFormulario(paciente)
+    
