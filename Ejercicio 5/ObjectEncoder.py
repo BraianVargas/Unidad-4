@@ -14,7 +14,7 @@ class ObjectEncoder(object):
             class_name = d['__class__']
             class_ = eval(class_name)
             if class_name == 'ManejadorPacientes':
-                pacientes = d['Pacientes']
+                pacientes = d['Paciente']
                 manejador = class_()
                 for i in range(len(pacientes)):
                     dPacientes = pacientes[i]
