@@ -1,0 +1,32 @@
+{
+    "__class__": "ManejadorProvincias",
+    "provincias": [
+        {
+            "__class__": "Provincia",
+            "__atributos__": {
+                "nombre": "San Juan",
+                "capital": "San Juan",
+                "habitantes": "738,959",
+                "departamentos": "19"
+            }
+        },
+        {
+            "__class__": "Provincia",
+            "__atributos__": {
+                "nombre": "Santiago del Estero",
+                "capital": "Santiago del Estero",
+                "habitantes": "911,506",
+                "departamentos": "27"
+            }
+        },
+        {
+            "__class__": "Provincia",
+            "__atributos__": {
+                "nombre": "Mendoza",
+                "capital": "Mendoza",
+                "habitantes": "1,500,000",
+                "departamentos": "18"
+            }
+        }
+    ]
+}
